@@ -86,7 +86,7 @@ export default function SecretSets() {
             Puerto Rico · Jun 13, 2026 · 6:30 PM
           </div>
           <div style={{ fontSize: "0.58rem", letterSpacing: "0.2em", color: "#666", textTransform: "uppercase", fontStyle: "italic", marginTop: "0.25rem" }}>
-            tunes by <span style={{ color: LIME, fontStyle: "normal" }}>DJ Jahi</span>
+            tunes by <span style={{ color: LIME, fontStyle: "normal" }}>Jahi</span>
           </div>
         </div>
 
