@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const EMAILJS_PUBLIC_KEY = "3NHidGZTG3SujktwJ";
 const EMAILJS_SERVICE_ID = "service_7ig59di";
-const EMAILJS_TEMPLATE_ID = "template_9nlr5qc";
+const EMAILJS_TEMPLATE_ID = "fxp9rhr";
 
 const COORDS = { lat: 18.4655, lng: -66.1057, label: "18.4655° N, 66.1057° W" };
 const APPLE_MAPS = `https://maps.apple.com/?q=${COORDS.lat},${COORDS.lng}`;
