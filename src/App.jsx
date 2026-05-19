@@ -221,7 +221,21 @@ export default function SecretSets() {
           </div>
         )}
 
-        <div style={{ textAlign: "center", marginTop: "2rem" }}>
+        <div style={{ textAlign: "center", marginTop: "2rem", display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "center" }}>
+          <a href="https://www.instagram.com/secretsets.co?igsh=MTB3ZGlzcWRxcDZmaQ==" target="_blank" rel="noreferrer" style={{
+            display: "flex", alignItems: "center", gap: "0.5rem",
+            color: LIME, textDecoration: "none", transition: "color 0.2s",
+          }}
+            onMouseEnter={e => { e.currentTarget.style.opacity = "0.7"; }}
+            onMouseLeave={e => { e.currentTarget.style.opacity = "1"; }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            <span style={{ fontSize: "0.55rem", letterSpacing: "0.2em", textTransform: "uppercase" }}>secretsets.co</span>
+          </a>
           <span style={{ ...bold, fontSize: "0.65rem", color: "#222" }}>if you know, you know.</span>
         </div>
       </div>
