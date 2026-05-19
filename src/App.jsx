@@ -35,7 +35,6 @@ export default function SecretSets() {
         from_name: form.name.trim(),
         guests: form.guests,
         guest_label: form.guests === 1 ? "Just them" : `+${form.guests - 1} guest${form.guests - 1 > 1 ? "s" : ""}`,
-        reply_to: "secretsets.co@gmail.com",
       });
       setStep("done");
     } catch { setError("Something went wrong. Try again."); }
