@@ -10,7 +10,7 @@ const GOOGLE_MAPS = `https://www.google.com/maps?q=${COORDS.lat},${COORDS.lng}`;
 const LIME = "#c8ff00";
 
 const LogoSVG = () => (
-  <img src="/logo.svg" alt="Secret Sets" style={{ width: "100%", maxWidth: "300px", display: "block", margin: "0 auto" }} />
+  <img src="/logo.png" alt="Secret Sets" style={{ width: "100%", maxWidth: "300px", display: "block", margin: "0 auto" }} />
 );
 
 export default function SecretSets() {
