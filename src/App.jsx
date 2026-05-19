@@ -21,10 +21,16 @@ export default function SecretSets() {
   const [ejsReady, setEjsReady] = useState(false);
 
   useEffect(() => {
-    const s = document.createElement("script");
-    s.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
-    s.onload = () => { window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); setEjsReady(true); };
-    document.head.appendChild(s);
+    if (window.emailjs) {
+      setEjsReady(true);
+    } else {
+      const interval = setInterval(() => {
+        if (window.emailjs) {
+          setEjsReady(true);
+          clearInterval(interval);
+        }
+      }, 100);
+    }
   }, []);
 
   const handleSubmit = async () => {
