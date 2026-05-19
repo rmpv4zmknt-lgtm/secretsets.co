@@ -4,7 +4,7 @@ const EMAILJS_PUBLIC_KEY = "3NHidGZTG3SujktwJ";
 const EMAILJS_SERVICE_ID = "service_ku9uyrc";
 const EMAILJS_TEMPLATE_ID = "template_ww5rohe";
 
-const COORDS = { lat: 18.4655, lng: -66.1057, label: "18.4655° N, 66.1057° W" };
+const COORDS = { lat: 18.45580, lng: -65.97342, label: "18.45580° N, 65.97342° W" };
 const APPLE_MAPS = `https://maps.apple.com/?q=${COORDS.lat},${COORDS.lng}`;
 const GOOGLE_MAPS = `https://www.google.com/maps?q=${COORDS.lat},${COORDS.lng}`;
 const LIME = "#c8ff00";
@@ -15,7 +15,7 @@ const LogoSVG = () => (
 
 export default function SecretSets() {
   const [step, setStep] = useState("main");
-  const [form, setForm] = useState({ name: "", guests: 1 });
+  const [form, setForm] = useState({ name: "", guests: 1, email: "" });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [ejsReady, setEjsReady] = useState(false);
@@ -39,6 +39,7 @@ export default function SecretSets() {
     try {
       await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
         from_name: form.name.trim(),
+        from_email: form.email.trim(),
         guests: form.guests,
         guest_label: form.guests === 1 ? "Just them" : `+${form.guests - 1} guest${form.guests - 1 > 1 ? "s" : ""}`,
       });
@@ -151,6 +152,21 @@ export default function SecretSets() {
                 />
               </div>
               <div>
+                <label style={{ display: "block", fontSize: "0.48rem", letterSpacing: "0.3em", color: "#666", textTransform: "uppercase", marginBottom: "0.5rem" }}>Your Email</label>
+                <input type="email" placeholder="email@example.com" value={form.email}
+                  onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                  style={{
+                    width: "100%", background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    color: "#f0ede6", padding: "0.75rem 1rem",
+                    fontFamily: "'Courier New', monospace", fontSize: "0.9rem",
+                    outline: "none", boxSizing: "border-box",
+                  }}
+                  onFocus={e => e.target.style.borderColor = LIME}
+                  onBlur={e => e.target.style.borderColor = "rgba(255,255,255,0.12)"}
+                />
+              </div>
+              <div>
                 <label style={{ display: "block", fontSize: "0.48rem", letterSpacing: "0.3em", color: "#666", textTransform: "uppercase", marginBottom: "0.5rem" }}>How many people (including you)?</label>
                 <div style={{ display: "flex", gap: "0.5rem" }}>
                   {[1,2,3,4].map(n => (
@@ -165,7 +181,7 @@ export default function SecretSets() {
                   ))}
                 </div>
               </div>
-              <button onClick={handleSubmit} disabled={!form.name.trim() || submitting} style={{
+              <button onClick={handleSubmit}                 disabled={!form.name.trim() || !form.email.trim() || submitting} style={{
                 ...bold, marginTop: "0.25rem",
                 background: form.name.trim() ? LIME : "rgba(200,255,0,0.12)",
                 color: form.name.trim() ? "#0a0a0a" : "#555",
@@ -196,7 +212,7 @@ export default function SecretSets() {
               {form.guests === 1 ? "just you" : `you + ${form.guests - 1}`} · {form.name}
             </div>
             <div style={{ fontSize: "0.62rem", color: "#777", lineHeight: 1.9, marginBottom: "1.5rem" }}>
-              Don't share the coordinates.<br />Bring good energy. See you there.
+              Share it with your friends.<br />Bring good energy. See you there.
             </div>
             <div style={{ display: "flex", gap: "0.6rem" }}>
               <MapBtn label="Apple Maps" url={APPLE_MAPS} />
