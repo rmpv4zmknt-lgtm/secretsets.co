@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
 
+const globalStyles = `
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body, #root { width: 100%; min-height: 100%; background: #0a0a0a; }
+`;
+
 const EMAILJS_PUBLIC_KEY = "3NHidGZTG3SujktwJ";
 const EMAILJS_SERVICE_ID = "service_ku9uyrc";
 const EMAILJS_TEMPLATE_ID = "template_ww5rohe";
@@ -21,6 +26,9 @@ export default function SecretSets() {
   const [ejsReady, setEjsReady] = useState(false);
 
   useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = globalStyles;
+    document.head.appendChild(style);
     if (window.emailjs) {
       setEjsReady(true);
     } else {
